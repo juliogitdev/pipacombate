@@ -1,0 +1,111 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/pipa.gd" id="1_pipa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleVida"]
+bg_color = Color(0.18, 0.82, 0.34, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Pipa" type="Node2D"]
+script = ExtResource("1_pipa")
+
+[node name="ArtePipa" type="Sprite2D" parent="."]
+visible = false
+
+[node name="Corpo" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -42, 38, 0, 0, 45, -38, 0)
+color = Color(0.96, 0.24, 0.36, 1)
+
+[node name="Detalhe" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -42, 38, 0, 0, 0)
+color = Color(1, 0.73, 0.22, 1)
+
+[node name="DetalheEsquerdo" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -42, 0, 0, -38, 0)
+color = Color(0.75, 0.2, 0.5, 1)
+
+[node name="Faixa" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-5, -38, 5, -38, 5, 39, -5, 39)
+color = Color(1, 1, 1, 0.2)
+
+[node name="Marca" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-5, -28, 8, -8, 1, -8, 11, 20, -10, 2, -2, 2)
+color = Color(1, 1, 1, 0.72)
+
+[node name="Avatar" type="Sprite2D" parent="."]
+position = Vector2(0, 0)
+centered = true
+
+[node name="Inicial" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.1, 0.18, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 25
+text = "P"
+horizontal_alignment = 1
+
+[node name="Nome" type="Label" parent="."]
+offset_left = -62.0
+offset_top = 43.0
+offset_right = 62.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.12, 0.2, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 14
+text = "@jogador"
+horizontal_alignment = 1
+
+[node name="PoderLabel" type="Label" parent="."]
+visible = false
+offset_left = -105.0
+offset_top = 78.0
+offset_right = 105.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(1, 0.88, 0.25, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.025, 0.01, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 16
+text = "PODER ATIVADO!"
+horizontal_alignment = 1
+
+[node name="VipLabel" type="Label" parent="."]
+visible = false
+offset_left = -50.0
+offset_top = 76.0
+offset_right = 50.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0.45, 1, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.02, 0.18, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 15
+text = "✦ VIP ✦"
+horizontal_alignment = 1
+
+[node name="Vida" type="ProgressBar" parent="."]
+offset_left = -39.0
+offset_top = -62.0
+offset_right = 39.0
+offset_bottom = -52.0
+theme_override_styles/fill = SubResource("StyleVida")
+value = 100.0
+show_percentage = false
+
+[node name="VidaTexto" type="Label" parent="."]
+offset_left = -51.0
+offset_top = -84.0
+offset_right = 51.0
+offset_bottom = -64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.08, 0.14, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 13
+text = "100 / 100 HP"
+horizontal_alignment = 1

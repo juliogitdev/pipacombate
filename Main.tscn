@@ -1,0 +1,275 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/api_client.gd" id="2_api"]
+[ext_resource type="PackedScene" path="res://Vitoria.tscn" id="3_vitoria"]
+[ext_resource type="Script" path="res://scripts/comandos.gd" id="4_comandos"]
+[ext_resource type="Script" path="res://scripts/cenario.gd" id="5_cenario"]
+
+[sub_resource type="StyleBoxFlat" id="PresenteCardStyle"]
+bg_color = Color(0.075, 0.025, 0.16, 0.95)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.25, 1, 0.86, 0.92)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0.2, 0.95, 0.85, 0.3)
+shadow_size = 14
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Cenario" type="Node2D" parent="."]
+z_index = -10
+script = ExtResource("5_cenario")
+
+[node name="ApiClient" type="Node" parent="."]
+script = ExtResource("2_api")
+
+[node name="HttpEventos" type="HTTPRequest" parent="ApiClient"]
+timeout = 5.0
+
+[node name="HttpRanking" type="HTTPRequest" parent="ApiClient"]
+timeout = 5.0
+
+[node name="HttpResetCiclo" type="HTTPRequest" parent="ApiClient"]
+timeout = 5.0
+
+[node name="TimerEventos" type="Timer" parent="ApiClient"]
+wait_time = 0.7
+autostart = true
+
+[node name="TimerRanking" type="Timer" parent="ApiClient"]
+wait_time = 6.0
+autostart = true
+
+[node name="Pipas" type="Node2D" parent="."]
+
+[node name="Comandos" type="Node" parent="."]
+script = ExtResource("4_comandos")
+
+[node name="Vitoria" parent="." instance=ExtResource("3_vitoria")]
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Status" type="Label" parent="Hud"]
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 185.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "LIVE: conectando..."
+
+[node name="Ciclo" type="Label" parent="Hud"]
+offset_left = 190.0
+offset_top = 25.0
+offset_right = 350.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 0.92, 0.52, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.07, 0.15, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 16
+text = "CICLO 05:00"
+horizontal_alignment = 1
+
+[node name="Ranking" type="Label" parent="Hud"]
+visible = false
+offset_left = 430.0
+offset_top = 24.0
+offset_right = 700.0
+offset_bottom = 205.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "TOP DA LIVE"
+horizontal_alignment = 2
+
+[node name="RankingFundo" type="ColorRect" parent="Hud"]
+offset_left = 390.0
+offset_top = 18.0
+offset_right = 708.0
+offset_bottom = 181.0
+color = Color(0.025, 0.05, 0.11, 0.82)
+
+[node name="RankingLista" type="VBoxContainer" parent="Hud"]
+offset_left = 402.0
+offset_top = 27.0
+offset_right = 696.0
+offset_bottom = 173.0
+theme_override_constants/separation = 3
+
+[node name="PresenteCard" type="Control" parent="Hud"]
+visible = false
+offset_left = 528.0
+offset_top = 760.0
+offset_right = 700.0
+offset_bottom = 830.0
+
+[node name="Fundo" type="Panel" parent="Hud/PresenteCard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("PresenteCardStyle")
+
+[node name="Avatar" type="TextureRect" parent="Hud/PresenteCard"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 62.0
+offset_bottom = 62.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icone" type="Label" parent="Hud/PresenteCard"]
+offset_left = 67.0
+offset_top = 7.0
+offset_right = 119.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 34
+text = "🌹"
+horizontal_alignment = 1
+
+[node name="Titulo" type="Label" parent="Hud/PresenteCard"]
+visible = false
+offset_left = 154.0
+offset_top = 13.0
+offset_right = 415.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(1, 0.88, 0.42, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.01, 0.12, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+text = "PRESENTE NA LIVE!"
+horizontal_alignment = 1
+
+[node name="Detalhe" type="Label" parent="Hud/PresenteCard"]
+offset_left = 116.0
+offset_top = 14.0
+offset_right = 164.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.86, 1, 0.98, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.01, 0.18, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 23
+text = "×1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuebraoCard" type="Control" parent="Hud"]
+visible = false
+offset_left = 145.0
+offset_top = 640.0
+offset_right = 575.0
+offset_bottom = 748.0
+
+[node name="Fundo" type="Panel" parent="Hud/QuebraoCard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("PresenteCardStyle")
+
+[node name="Titulo" type="Label" parent="Hud/QuebraoCard"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 418.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.72, 1, 0.96, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.01, 0.18, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 23
+text = "⚡ QUEBRÃO! ⚡"
+horizontal_alignment = 1
+
+[node name="Detalhe" type="Label" parent="Hud/QuebraoCard"]
+offset_left = 12.0
+offset_top = 52.0
+offset_right = 418.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(1, 0.9, 0.48, 1)
+theme_override_font_sizes/font_size = 16
+text = "PREPAREM AS LINHAS!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PresenteBanner" type="Label" parent="Hud"]
+visible = false
+offset_left = 70.0
+offset_top = 285.0
+offset_right = 650.0
+offset_bottom = 365.0
+theme_override_colors/font_color = Color(1, 0.92, 0.45, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.04, 0.02, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 27
+text = "🎁 @JOGADOR ENVIOU PRESENTE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConquistaBanner" type="Label" parent="Hud"]
+visible = false
+offset_left = 65.0
+offset_top = 385.0
+offset_right = 655.0
+offset_bottom = 465.0
+theme_override_colors/font_color = Color(1, 0.82, 0.16, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.035, 0.01, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/font_size = 28
+text = "@JOGADOR DESBLOQUEOU UMA CONQUISTA!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Banner" type="Label" parent="Hud"]
+visible = false
+offset_left = 70.0
+offset_top = 205.0
+offset_right = 650.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(1, 0.88, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.1, 0.18, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 28
+text = "JOGADOR CORTOU @RIVAL!"
+horizontal_alignment = 1
+
+[node name="EventosAtivos" type="Label" parent="Hud"]
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 340.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(1, 0.86, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.07, 0.15, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 17
+
+[node name="Desempenho" type="Label" parent="Hud"]
+visible = false
+offset_left = 22.0
+offset_top = 200.0
+offset_right = 260.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(0.72, 1, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.07, 0.15, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 15
+
+[node name="Instrucao" type="Label" parent="Hud"]
+offset_left = 14.0
+offset_top = 914.0
+offset_right = 706.0
+offset_bottom = 950.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "COMENTE pra ganhar sua pipa"
+horizontal_alignment = 1

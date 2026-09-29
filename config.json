@@ -1,0 +1,359 @@
+{
+  "api": {
+    "api_key": "",
+    "backoff_ms": 2000.0,
+    "base_url": "https://tiktok-roblox-live-manager.onrender.com",
+    "bridge_profile": "raw",
+    "bridge_wait_seg": 8.0,
+    "consumer_id": "pipajogo-godot",
+    "events_limit": 100.0,
+    "events_poll_ms": 700.0,
+    "live_username": "",
+    "modo": "bridge",
+    "public_base_url": "https://tiktok-roblox-live-manager.onrender.com",
+    "ranking_poll_ms": 6000.0,
+    "watchdog_eventos_seg": 8.0
+  },
+  "area_jogo": {
+    "margem_baixo_pct": 22.0,
+    "margem_lateral_pct": 4.0,
+    "margem_topo_pct": 14.0
+  },
+  "arena": {
+    "atrito_dps": 18.0,
+    "eventos_por_frame": 10.0,
+    "fila_maxima": 1200.0,
+    "forca_vagar": 48.0,
+    "hp_base": 110.0,
+    "max_pipas": 40.0,
+    "raio_busca_inimigo": 320.0,
+    "tempo_spawn_seg": 0.62,
+    "usar_bots_abaixo_de": 0.0,
+    "velocidade_max": 145.0
+  },
+  "cenario": {
+    "altura_cidade_pct": 20.0,
+    "altura_rua_pct": 9.0,
+    "chuva_quantidade": 70.0,
+    "chuva_velocidade": 560.0,
+    "faixas_gradiente": 28.0,
+    "mostrar_arvores": true,
+    "mostrar_montanhas": true,
+    "opacidade_nuvens": 0.78,
+    "ouro_quantidade": 48.0,
+    "ouro_velocidade": 155.0,
+    "parallax": true,
+    "quantidade_estrelas": 42.0,
+    "quantidade_nuvens": 11.0,
+    "quantidade_passaros": 6.0,
+    "tema": "favela_noite",
+    "usar_fundo_favela": true,
+    "velocidade_nuvens": 12.0
+  },
+  "ciclos": {
+    "ativados": true,
+    "duracao_minutos": 5.0,
+    "manter_nicks_ao_resetar": true,
+    "mostrar_contagem": true,
+    "retry_reset_seg": 2.0
+  },
+  "combate": {
+    "banner_corte_seg": 1.8,
+    "corte_altura_max_pct": 60.0,
+    "corte_ignorar_base_px": 110.0,
+    "dano_contato_mult": 3.8,
+    "faisca_duracao_seg": 0.38,
+    "faisca_quantidade": 8.0,
+    "faisca_velocidade": 82.0,
+    "impacto_duracao_seg": 0.45,
+    "impacto_raio_max": 26.0,
+    "intervalo_faisca_seg": 0.11,
+    "intervalo_simulacao_seg": 0.03,
+    "queda_balanco": 48.0,
+    "queda_duracao_seg": 1.1,
+    "queda_gravidade": 560.0,
+    "queda_impulso_lateral": 110.0,
+    "queda_impulso_vertical": 150.0
+  },
+  "dano": {
+    "hp_maximo_teto": 5000.0,
+    "hp_por_ponto": 0.5,
+    "reducao_dano_por_1000pts_pct": 15.0
+  },
+  "efeitos": {
+    "boost_corte_mult": 3.0,
+    "boost_corte_seg": 10.0,
+    "escudo_seg": 8.0,
+    "gigante_escala": 1.55,
+    "gigante_seg": 22.0,
+    "quebra_animacao_seg": 1.2
+  },
+  "engajamento": {
+    "banner_marco_seg": 4.5,
+    "marcos_vida": {
+      "1000": {
+        "duracao_seg": 10.0,
+        "nome": "LINHA EM CHAMAS",
+        "recompensa": "BOOST"
+      },
+      "2500": {
+        "duracao_seg": 15.0,
+        "nome": "LENDA DOS CÉUS",
+        "recompensa": "LENDARIO"
+      },
+      "500": {
+        "duracao_seg": 5.0,
+        "nome": "PIPA TURBINADA",
+        "recompensa": "ESCUDO"
+      }
+    },
+    "particulas_marco": 34.0
+  },
+  "eventos": {
+    "cooldown_global_seg": 3.0,
+    "gatilhos_automaticos": true,
+    "lista": {
+      "chuva_de_ouro": {
+        "banner": "CHUVA DE OURO",
+        "duracao_seg": 15.0,
+        "exclusivo": false,
+        "gatilhos": [
+          "manual",
+          {
+            "min_diamantes": 50.0,
+            "tipo": "presente"
+          }
+        ],
+        "grupo": "celebracao",
+        "modificadores": {},
+        "nome": "Chuva de ouro"
+      },
+      "hora_do_rush": {
+        "banner": "HORA DO RUSH",
+        "duracao_seg": 30.0,
+        "exclusivo": false,
+        "gatilhos": [
+          "manual"
+        ],
+        "grupo": "bonus",
+        "modificadores": {
+          "corte_mult": 1.5,
+          "pontos_mult": 1.5,
+          "spawn_mult": 1.5
+        },
+        "nome": "Hora do rush"
+      },
+      "morte_subita": {
+        "banner": "MORTE SÚBITA",
+        "duracao_seg": 20.0,
+        "exclusivo": true,
+        "gatilhos": [
+          "manual"
+        ],
+        "grupo": "regra",
+        "modificadores": {
+          "dano_mult": 4.0
+        },
+        "nome": "Morte súbita"
+      },
+      "noite": {
+        "banner": "CAIU A NOITE",
+        "cenario": "ceu_noite",
+        "duracao_seg": 60.0,
+        "exclusivo": true,
+        "gatilhos": [
+          "manual",
+          {
+            "cada_seg": 600.0,
+            "tipo": "tempo"
+          }
+        ],
+        "grupo": "clima",
+        "modificadores": {},
+        "nome": "Caiu a noite"
+      },
+      "pontos_dobro": {
+        "banner": "PONTOS EM DOBRO",
+        "duracao_seg": 45.0,
+        "exclusivo": false,
+        "gatilhos": [
+          "manual",
+          {
+            "recurso": "diamantes",
+            "tipo": "meta",
+            "valor": 500.0
+          }
+        ],
+        "grupo": "bonus",
+        "modificadores": {
+          "pontos_mult": 2.0
+        },
+        "nome": "Pontos em dobro"
+      },
+      "tempestade": {
+        "banner": "TEMPESTADE!",
+        "cenario": "ceu_tempestade",
+        "duracao_seg": 45.0,
+        "exclusivo": true,
+        "gatilhos": [
+          "manual"
+        ],
+        "grupo": "clima",
+        "modificadores": {
+          "vento_mult": 1.8
+        },
+        "nome": "Tempestade"
+      }
+    },
+    "max_simultaneos": 2.0
+  },
+  "janela": {
+    "altura": 960.0,
+    "fps": 60.0,
+    "fullscreen": false,
+    "largura": 720.0
+  },
+  "likes": {
+    "cura_max_por_evento": 35.0,
+    "vida_por_like": 0.35
+  },
+  "movimento": {
+    "arrasto": 2.2,
+    "correcao_vertical": 42.0,
+    "frequencia_oscilacao": 1.6,
+    "impulso_lateral": 148.0,
+    "inclinacao_max_graus": 16.0,
+    "linha_curvatura": 20.0,
+    "linha_espessura": 2.2,
+    "linha_onda": 4.4,
+    "linha_segmentos": 14.0,
+    "oscilacao_vertical": 22.0,
+    "rabiola_comprimento": 160.0,
+    "rabiola_frequencia": 5.6,
+    "rabiola_onda": 16.0,
+    "rabiola_segmentos": 14.0,
+    "troca_lado_distancia": 70.0,
+    "zona_vertical_baixo_pct": 71.0,
+    "zona_vertical_topo_pct": 9.0
+  },
+  "pipas": {
+    "arte_tamanho_px": 86.0,
+    "bonus_escala_max": 0.18,
+    "brilho_skin": 0.85,
+    "escala_padrao": 0.92,
+    "pontos_escala_max": 1500.0,
+    "pontos_linha_neon": 600.0,
+    "quantidade_artes": 10.0,
+    "rosa_10_escala": 1.32,
+    "rosa_5_escala": 1.12,
+    "skin_padrao": "classica",
+    "skin_por_presente": true,
+    "tita_chance_pct": 18.0,
+    "tita_cerol_mult": 1.18,
+    "tita_escala": 1.18,
+    "skins": [
+      "classica",
+      "neon",
+      "aurora",
+      "candy",
+      "galaxy",
+      "safira",
+      "sunset",
+      "lilas",
+      "prata",
+      "solar",
+      "royal"
+    ]
+  },
+  "presentes": {
+    "banner_presente_seg": 5.0,
+    "banner_compacto_seg": 2.2,
+    "caca_forca": 310.0,
+    "combo_janela_seg": 0.55,
+    "derruba_tres_max_alvos": 3.0,
+    "hp_por_diamante": 40.0,
+    "pontos_por_diamante": 1.0,
+    "por_gift": {
+      "Mini Dino": {
+        "efeito": "DERRUBA_TRES",
+        "hp": 400.0,
+        "pontos": 20.0,
+        "som": "combo"
+      },
+      "Perfume": {
+        "efeito": "GIGANTE",
+        "hp": 300.0,
+        "pontos": 20.0,
+        "som": "gigante"
+      },
+      "Rosa": {
+        "efeito": "CACA_E_DERRUBA",
+        "hp": 200.0,
+        "pontos": 10.0,
+        "som": "corte_forte"
+      },
+      "Rosquinha": {
+        "efeito": "ESCUDO",
+        "hp": 120.0,
+        "pontos": 8.0,
+        "segundos": 30.0,
+        "som": "escudo"
+      }
+    },
+    "usar_pontuacao_local": false
+  },
+  "quebrao": {
+    "ativado": true,
+    "alvos_base": 2.0,
+    "aviso_seg": 1.4,
+    "cooldown_usuario_seg": 12.0,
+    "duracao_ataque_seg": 2.8,
+    "expira_fila_seg": 30.0,
+    "max_alvos": 5.0,
+    "presentes_por_alvo_extra": 5.0,
+    "rosas_intensidade_maxima": 50.0,
+    "resultado_seg": 3.2
+  },
+  "robustez": {
+    "max_faiscas": 360.0,
+    "max_impactos": 80.0,
+    "monitor_intervalo_seg": 1.0,
+    "mostrar_monitor": false
+  },
+  "ranking": {
+    "banner_lider_seg": 2.2,
+    "quantidade": 3.0
+  },
+  "som": {
+    "arquivos": {
+      "campeao": "assets/sons/campeao.ogg",
+      "comentario": "assets/sons/comentario.ogg",
+      "contato": "",
+      "corte": "assets/sons/corte.ogg",
+      "escudo": "assets/sons/escudo.ogg",
+      "gigante": "assets/sons/gigante.ogg",
+      "lider": "assets/sons/lider.ogg",
+      "marco": "assets/sons/marco.ogg",
+      "mini_dino": "assets/sons/mini_dino.ogg",
+      "presente": "assets/sons/presente.ogg",
+      "quebrao": "assets/sons/quebrao.ogg",
+      "quebrao_aviso": "assets/sons/quebrao_aviso.ogg",
+      "quebrao_resultado": "assets/sons/quebrao_resultado.ogg",
+      "rosa": "assets/sons/rosa.ogg"
+    },
+    "ativado": true,
+    "intervalo_contato_seg": 0.09,
+    "intervalo_som_contato_seg": 0.42,
+    "max_efeitos_simultaneos": 12.0,
+    "musica_fundo": "assets/sons/fundo.ogg",
+    "volume_efeitos": 0.85,
+    "volume_master": 0.9,
+    "volume_musica": 0.0
+  },
+  "texto_fixo": "COMENTE pra ganhar sua pipa   |   PRESENTE = sua pipa corta!",
+  "vitoria": {
+    "duracao_seg": 6.0,
+    "min_participantes": 2.0,
+    "proxima_batalha_seg": 5.0
+  }
+}
